@@ -1,3 +1,3 @@
 # ManyBodyCritical
-We consider the many body critical region.
+We consider the many body critical region.\
 help from chatgpt
