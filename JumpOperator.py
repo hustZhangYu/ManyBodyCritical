@@ -46,9 +46,8 @@ def SigmaZ_i(L,n,m):
     I=sp.I()
     
 
-    h2=[0 for j in range(L)]
+    h2=np.zeros(L)
     h2[m-1]=1
-
     #Hamiltonian
     O=np.zeros([2**L,2**L])
     
@@ -56,17 +55,60 @@ def SigmaZ_i(L,n,m):
     for i in range(L):
         O=O+np.kron(np.eye(2**i),np.kron(h2[i]*sigmaz,np.eye(2**(L-i-1))))   
     
-    # fixed particle number
-    list1=nlabel(L,n)
-    La=len(list1)
-    O1=np.zeros([La,La])
-    for i in range(La):
-        for j in range(La):
-            O1[i,j]=O[list1[i],list1[j]]
+# =============================================================================
+#     # fixed particle number
+#     list1=nlabel(L,n)
+#     La=len(list1)
+#     O1=np.zeros([La,La])
+#     for i in range(La):
+#         for j in range(La):
+#             O1[i,j]=O[list1[i],list1[j]]
+# =============================================================================
 
-    return O1
+    return O
 
+def SigmaX_i(L,n,m):
+     
+    # m is the m_th site, no need to -1 (F**k python)
+    # return the O operator
+    # spin operator
+    sigmax=sp.sigma_x()
+    I=sp.I()
+    
 
+    h2=np.zeros(L)
+    h2[m-1]=1
+
+    #Hamiltonian
+    O=np.zeros([2**L,2**L])
+    
+    # disorder term
+    for i in range(L):
+        O=O+np.kron(np.eye(2**i),np.kron(h2[i]*sigmax,np.eye(2**(L-i-1))))   
+    
+
+    return O
+
+def SigmaY_i(L,n,m):
+     
+    # m is the m_th site, no need to -1 (F**k python)
+    # return the O operator
+    # spin operator
+    sigmay=sp.sigma_y()
+    I=sp.I()
+    
+
+    h2=np.zeros(L)
+    h2[m-1]=1
+
+    #Hamiltonian
+    O=np.zeros([2**L,2**L])
+    
+    # disorder term
+    for i in range(L):
+        O=O+np.kron(np.eye(2**i),np.kron(h2[i]*sigmay,np.eye(2**(L-i-1))))   
+
+    return O
 
     
 
