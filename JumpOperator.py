@@ -10,30 +10,9 @@ We define the Lindblad operator in spin systems
 
 import numpy as np
 import spin as sp
-import random as rd
 
 
-def nlabel(L,n):
-    """
-    Parameters
-    ----------
-    L : int
-        size of the system.
-    n : int
-        numbers of particle
-    Returns
-    -------
-    sequence of the basis with the particle number
-    """
-    No=[[1,0],[0,0]]
-    N=np.zeros([2**L,2**L])
-    for i in range(L):
-        N=N+np.kron(np.eye(2**i),np.kron(No,np.eye(2**(L-i-1))))  
-    list1=[]
-    for i in range(2**L):
-        if N[i,i]==n:
-            list1.append(i)
-    return list1
+from basis import nlabel
 
 def SigmaZ_i(L,n,m):
      
@@ -115,5 +94,3 @@ def SigmaY_i(L,n,m):
 if __name__=="__main__":
     X=1
     print(X)
-
-
